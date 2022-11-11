@@ -21,4 +21,19 @@ function second(){
     let scissor = document.createElement("button");
     scissor.innerHTML = "SCISSOR";
     buttons.appendChild(scissor);
+
+    rock.addEventListener("click", function(){
+        console.log(computerSelection())
+    })
+}
+
+function computerSelection(){
+    let array  = ["rock", "paper", "scissor"];
+
+    let choice = [];
+
+    for(let i = 0; i < array.length; i++){ //shuffling the array with Fisher-Yates Shuffle Algorithm (please visit: https://www.youtube.com/watch?v=NfekYmg4vCE)
+        result = array[Math.floor(Math.random() * array.length)];
+      }
+      return choice;
 }
