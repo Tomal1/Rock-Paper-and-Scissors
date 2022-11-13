@@ -1,0 +1,25 @@
+#secondScreen{
+    position: absolute;
+    top: 200px;
+}
+
+.outcome{
+    position: absolute; 
+    top: -200px;
+    left: 20px;
+
+}
+
+.computerAns{
+    position:absolute;
+    top: -100px;
+    left:20px
+}
+
+.buttons{
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+
+}
+

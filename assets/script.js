@@ -1,71 +1,88 @@
 
 let startBtn = document.querySelector("#startBtn");
 let intro = document.querySelector("#intro");
-let secondScreen = document.querySelector("#secondScreen");
 let buttons = document.querySelector(".buttons");
 let computerAns = document.querySelector(".computerAns");
-
+let outcome = document.querySelector(".outcome");
+let secondScreen = document.querySelector("#secondScreen");
 
 startBtn.addEventListener("click", function(){
     intro.style.visibility = "hidden";
-    second();
+    makeBtn();
 })
 
-function second(){
-    let rock = document.createElement("button");
-    rock.innerHTML = "ROCK";
+function makeBtn(){
+    let rock = document.createElement("img");
+    rock.setAttribute("src", "./assets/images/rock.jpg");
     buttons.appendChild(rock);
 
-    let paper = document.createElement("button");
-    paper.innerHTML = "PAPER";
+    let paper = document.createElement("img");
+    paper.setAttribute("src", "./assets/images/paper.jpg");
     buttons.appendChild(paper);
 
-    let scissor = document.createElement("button");
-    scissor.innerHTML = "SCISSOR";
+    let scissor = document.createElement("img");
+    scissor.setAttribute("src", "./assets/images/scissor.jpg");
     buttons.appendChild(scissor);
 
-
     rock.addEventListener("click", function(){
-        computerAns.innerHTML = computerSelection();
-        paper.style.visibility = "hidden";
-        scissor.style.visibility = "hidden";
 
-        if(computerAns.innerHTML === "rock"){
-            console.log("draw try again");
-        } else if (computerAns.innerHTML === "paper"){
-             console.log("you lose haha");
-        }else if (computerAns.innerHTML === "scissor"){
-            console.log("you win..well done!");
+        let myselection = "rock";
+        let myObj = {
+            myselection,
         }
+
+        let stringObj = JSON.stringify(myObj);
+        localStorage.setItem(myselection, stringObj);
+
+        let unString = JSON.parse(stringObj);
+        conditions(unString);
     })
 
-    paper.addEventListener("click", function(){
-        computerAns.innerHTML = computerSelection();
-        rock.style.visibility = "hidden";
-        scissor.style.visibility = "hidden";
-
-        if(computerAns.innerHTML === "rock"){
-            console.log("you win..well done!");
-        } else if (computerAns.innerHTML === "paper"){
-             console.log("draw try again");
-        }else if (computerAns.innerHTML === "scissor"){
-            console.log("you lose haha");
+    paper.addEventListener("click", function(){     
+        let myselection = "paper";
+        let myObj = {
+            myselection,
         }
+
+        let stringObj = JSON.stringify(myObj);
+        localStorage.setItem(myselection, stringObj);
+
+        let unString = JSON.parse(stringObj);
+        conditions(unString);
     })
 
     scissor.addEventListener("click", function(){
-        computerAns.innerHTML = computerSelection();
-        rock.style.visibility = "hidden";
-        paper.style.visibility = "hidden";
-
-        if(computerAns.innerHTML === "rock"){
-            console.log("you lose haha");
-        } else if (computerAns.innerHTML === "paper"){
-             console.log("you win..well done!");
-        }else if (computerAns.innerHTML === "scissor"){
-            console.log("draw try again");
+        let myselection = "scissor";
+        let myObj = {
+            myselection,
         }
+
+        let stringObj = JSON.stringify(myObj);
+        localStorage.setItem(myselection, stringObj);
+
+        let unString = JSON.parse(stringObj);
+        conditions(unString);
     })
+}
+
+function conditions(unString){
+    computerAns.innerHTML = computerSelection()
+
+    if (computerAns.innerHTML === unString.myselection){
+        outcome.innerHTML ="draw try again";
+    }else if (computerAns.innerHTML === "rock" && unString.myselection === "paper"){
+        outcome.innerHTML ="you win..well done!";
+    }else if (computerAns.innerHTML === "rock" && unString.myselection === "scissor"){
+        outcome.innerHTML ="you lose haha";
+    }else if (computerAns.innerHTML === "paper" && unString.myselection === "scissor"){
+        outcome.innerHTML ="you win..well done!";
+    }else if (computerAns.innerHTML === "paper" && unString.myselection === "rock"){
+        outcome.innerHTML ="you lose haha";
+    }else if (computerAns.innerHTML === "scissor" && unString.myselection === "rock"){
+        outcome.innerHTML ="you win..well done!";
+    }else if (computerAns.innerHTML === "scissor" && unString.myselection === "paper"){
+        outcome.innerHTML ="you lose haha";
+    }
 }
 
 function computerSelection(){
