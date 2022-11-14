@@ -14,14 +14,17 @@ startBtn.addEventListener("click", function(){
 function makeBtn(){
     let rock = document.createElement("img");
     rock.setAttribute("src", "./assets/images/rock.jpg");
+    rock.classList.add("btnDecoration");
     buttons.appendChild(rock);
 
     let paper = document.createElement("img");
     paper.setAttribute("src", "./assets/images/paper.jpg");
+    paper.classList.add("btnDecoration");
     buttons.appendChild(paper);
 
     let scissor = document.createElement("img");
     scissor.setAttribute("src", "./assets/images/scissor.jpg");
+    scissor.classList.add("btnDecoration");
     buttons.appendChild(scissor);
 
     rock.addEventListener("click", function(){
@@ -68,20 +71,48 @@ function makeBtn(){
 function conditions(unString){
     computerAns.innerHTML = computerSelection()
 
+    let rockC = document.createElement("img");
+    rockC.setAttribute("src", "./assets/images/rock.jpg");
+    rockC.classList.add("comBtnDecoration");
+    
+
+    let paperC = document.createElement("img");
+    paperC.setAttribute("src", "./assets/images/paper.jpg");
+    paperC.classList.add("comBtnDecoration");
+    
+
+    let scissorC = document.createElement("img");
+    scissorC.setAttribute("src", "./assets/images/scissor.jpg");
+    scissorC.classList.add("comBtnDecoration");
+    
+
+
+
+
+
+
+
+
     if (computerAns.innerHTML === unString.myselection){
         outcome.innerHTML ="draw try again";
     }else if (computerAns.innerHTML === "rock" && unString.myselection === "paper"){
         outcome.innerHTML ="you win..well done!";
+        computerAns.appendChild(rockC);
     }else if (computerAns.innerHTML === "rock" && unString.myselection === "scissor"){
         outcome.innerHTML ="you lose haha";
+        computerAns.appendChild(rockC);
     }else if (computerAns.innerHTML === "paper" && unString.myselection === "scissor"){
         outcome.innerHTML ="you win..well done!";
+        computerAns.appendChild(paperC);
     }else if (computerAns.innerHTML === "paper" && unString.myselection === "rock"){
         outcome.innerHTML ="you lose haha";
+        computerAns.appendChild(paperC);
     }else if (computerAns.innerHTML === "scissor" && unString.myselection === "rock"){
         outcome.innerHTML ="you win..well done!";
+        computerAns.appendChild(scissorC);
     }else if (computerAns.innerHTML === "scissor" && unString.myselection === "paper"){
         outcome.innerHTML ="you lose haha";
+        computerAns.appendChild(scissorC);
     }
 }
 
