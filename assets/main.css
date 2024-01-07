@@ -1,0 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+body {
+  background-image: url();
+  background-color: rgb(29, 45, 95);
+}
+
+nav {
+  color: rgb(44, 188, 207);
+  height: 100px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
